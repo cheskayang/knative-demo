@@ -1,0 +1,21 @@
+  apiVersion: eventing.knative.dev/v1
+  kind: Broker
+  metadata:
+    name: default
+    namespace: exp
+    annotations:
+      eventing.knative.dev/broker.class: RabbitMQBroker
+  spec:
+    config:
+      apiVersion: v1
+      kind: Secret
+      name: rokn-rabbitmq-broker-secret
+    delivery:
+      retry: 2
+      backoffPolicy: exponential
+      backoffDelay: PT60S
+      # deadLetterSink:
+      #   ref:
+      #     apiVersion: serving.knative.dev/v1
+      #     kind: Service
+      #     name: dlq-service    

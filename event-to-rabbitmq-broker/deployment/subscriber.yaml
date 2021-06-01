@@ -1,0 +1,28 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: event-subscriber
+  namespace: exp
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/target: "5"
+    spec:
+      timeoutSeconds: 7200
+      containers:
+        - image: gcr.io/clearbanc-api-dev/knative:v16
+          env:
+          - name: SLEEP_TIME
+            value: "120000"
+          livenessProbe: 
+            httpGet:
+              path: /liveness 
+          readinessProbe:
+            httpGet:
+              path: /readiness  
+            initialDelaySeconds: 30
+            periodSeconds: 15
+            timeoutSeconds: 15
+            successThreshold: 1
+            failureThreshold: 5  

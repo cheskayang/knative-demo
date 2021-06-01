@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-app-keda
+  namespace: exp
+  labels:
+    app: test-app-keda
+spec:
+  selector:
+    matchLabels:
+      app: test-app-keda
+  template:
+    metadata:
+      labels:
+        app: test-app-keda
+    spec:
+      containers:
+        - name: test-app-keda
+          image: gcr.io/clearbanc-api-dev/exp:v3
+          imagePullPolicy: Always
+          env:
+            - name: CONNECTION_STRING
+              valueFrom:
+                secretKeyRef:
+                  name: rabbit-host
+                  key: host
+            - name: PREFETCH
+              value: "3"    

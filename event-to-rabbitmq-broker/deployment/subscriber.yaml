@@ -9,9 +9,9 @@ spec:
       annotations:
         autoscaling.knative.dev/target: "5"
     spec:
-      timeoutSeconds: 7200
+      timeoutSeconds: 605
       containers:
-        - image: gcr.io/clearbanc-api-dev/knative:v16
+        - image: gcr.io/clearbanc-api-dev/knative:v19
           env:
           - name: SLEEP_TIME
             value: "120000"

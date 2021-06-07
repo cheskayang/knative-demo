@@ -1,0 +1,23 @@
+#good pod, has mtls access
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: curl
+  name: curl
+  namespace: exp
+spec:
+  containers:
+  - name: curl
+    image: alpine:3.12
+    tty: true
+    command:
+    - sh
+    - -c
+    - |
+      sh << EOF
+      set -euxo pipefail
+      apk add htop curl bash
+      
+      tail -f /dev/null
+      EOF

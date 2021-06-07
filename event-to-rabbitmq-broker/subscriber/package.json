@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.21.1",
+    "cloudevents": "^4.0.2",
     "express": "^4.17.1",
     "uuid": "^8.3.2"
   }

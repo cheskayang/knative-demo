@@ -1,15 +1,16 @@
 apiVersion: eventing.knative.dev/v1
 kind: Trigger
 metadata:
-  name: event-trigger
+  name: reply-trigger
   namespace: exp
 spec:
   broker: default
   filter:
     attributes:
-      type: parse.order.start 
+      type: parse.order.finish
   subscriber:
     ref:
-      apiVersion: serving.knative.dev/v1
+      apiVersion: v1
       kind: Service
-      name: event-subscriber
+      name: event-producer-service
+    uri: /reply  

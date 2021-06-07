@@ -13,6 +13,16 @@ app.use(express.json());
 
 console.log("Sink URL is " + sinkUrl);
 
+app.post('/', async (req, res) => {
+  console.log('received reply>>>', req.body)
+  res.status(200).send();
+})
+
+app.post('/reply', async (req, res) => {
+  console.log('received reply>>>', req.body)
+  res.status(200).send();
+})
+
 app.post('/event', async (req, res) => {
   const sleepTime = Number(req.body.timeout) || 120;
   
@@ -40,8 +50,8 @@ app.post('/event', async (req, res) => {
   console.log("Emitting event #" + ++eventIndex);
 
   // consider to have a standard for souce and type
-  const source = `urn:event:from:my-api/resource/123`;
-  const type = `your.event.source.type`;
+  const source = `exp.event-producer`;
+  const type = `parse.order.start`;
   const data = {timeout: sleepTime, sent_at: Date.now()};
   const ce = new CloudEvent({ type, source, data });
   

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: event-producer
-          image: gcr.io/clearbanc-api-dev/knative-source:v5
+          image: gcr.io/clearbanc-api-dev/knative-source:v7
           imagePullPolicy: Always
 
 ---

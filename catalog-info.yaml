@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: knative-demo
+  annotations:
+    github.com/project-slug: cheskayang/knative-demo
+spec:
+  type: other
+  lifecycle: unknown
+  owner: cheskayang

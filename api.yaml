@@ -6,6 +6,6 @@ metadata:
 spec:
   type: openapi
   lifecycle: production
-  owner: user:guest
+  owner: cheskayang
   definition:
     $openapi: https://api.apis.guru/v2/openapi.yaml
